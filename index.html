@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quem é o impostor?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main id="app">
+  <p id="carregando" class="carregando">Conectando…</p>
+
+  <!-- LOBBY -->
+  <section id="tela-lobby" class="tela" hidden>
+    <header class="lobby-topo">
+      <h1 class="marca">Quem é o<br>impostor?</h1>
+      <p class="lobby-sub">De 4 a 10 pessoas, dois vídeos, um impostor.</p>
+    </header>
+    <div class="lobby-grade">
+      <div class="perfil">
+        <input id="input-foto" type="file" accept="image/*" class="escondido">
+        <label class="avatar-upload" for="input-foto">
+          <img id="minha-foto" class="avatar" alt="Sua foto">
+          <span class="avatar-dica">Escolher foto</span>
+        </label>
+        <label class="campo-rotulo" for="input-nome">Seu nome</label>
+        <input id="input-nome" class="campo" maxlength="16" autocomplete="off" placeholder="Como te chamam?">
+        <button id="btn-comecar" class="btn btn-principal" disabled>Começar</button>
+        <p id="perfil-aviso" class="aviso"></p>
+      </div>
+      <div class="sala">
+        <div class="sala-topo">
+          <h2>Na sala</h2>
+          <span id="contador-prontos" class="contador"></span>
+        </div>
+        <ul id="lista-jogadores" class="lista-jogadores"></ul>
+        <p id="status-lobby" class="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTAGEM -->
+  <section id="tela-contagem" class="tela tela-centro" hidden>
+    <p class="contagem-texto">Prepare-se. O vídeo começa em</p>
+    <div id="contagem-numero" class="contagem-numero" aria-live="polite">5</div>
+  </section>
+
+  <!-- VÍDEO -->
+  <section id="tela-video" class="tela tela-centro" hidden>
+    <div class="video-coluna">
+      <div class="linha-tempo">
+        <p>Preste atenção nos detalhes. Um de vocês está vendo um vídeo diferente.</p>
+        <span id="video-tempo" class="tempo">1:30</span>
+      </div>
+      <div class="barra"><div id="video-barra" class="barra-preenchida"></div></div>
+      <div class="video-moldura">
+        <iframe id="video-frame" title="Short da rodada"
+          allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCUSSÃO -->
+  <section id="tela-discussao" class="tela" hidden>
+    <h2 class="titulo-fase">Discussão</h2>
+    <p class="fase-sub">Cada um escreve uma palavra sobre o vídeo, na ordem das fotos. São duas voltas.</p>
+    <div id="fila-discussao" class="fila-discussao parede"></div>
+    <div class="chat">
+      <ol id="chat-mensagens" class="chat-mensagens"></ol>
+      <div id="chat-entrada" class="chat-entrada">
+        <input id="input-palavra" class="campo" maxlength="24" autocomplete="off" aria-label="Sua palavra">
+        <button id="btn-enviar" class="btn btn-principal">Enviar</button>
+      </div>
+      <button id="btn-votacao" class="btn btn-grande" hidden>INICIAR VOTAÇÃO</button>
+    </div>
+  </section>
+
+  <!-- VOTAÇÃO -->
+  <section id="tela-votacao" class="tela" hidden>
+    <div class="linha-tempo">
+      <h2 class="titulo-fase">Em quem você vota?</h2>
+      <span id="votacao-tempo" class="tempo">0:30</span>
+    </div>
+    <div class="barra"><div id="votacao-barra" class="barra-preenchida"></div></div>
+    <div id="cartas-voto" class="fila parede"></div>
+    <p id="votacao-status" class="status centro"></p>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="tela-resultado" class="tela" hidden>
+    <div id="revelacao" class="revelacao">
+      <p class="suspense">E quem venceu foi...</p>
+      <div id="vencedor" class="vencedor"></div>
+    </div>
+  </section>
+</main>
+<script type="module" src="js/game.js"></script>
+</body>
+</html>

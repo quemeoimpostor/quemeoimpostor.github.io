@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Painel do organizador | Quem é o impostor?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main id="app">
+  <section id="adm-porta" class="adm-porta">
+    <h1>Painel do organizador</h1>
+    <form id="form-senha">
+      <label class="campo-rotulo" for="senha">Senha</label>
+      <input id="senha" type="password" class="campo" autocomplete="current-password">
+      <button class="btn btn-principal">Entrar</button>
+      <p id="senha-erro" class="aviso"></p>
+    </form>
+  </section>
+
+  <section id="adm-painel" hidden>
+    <header class="adm-topo">
+      <h1>Painel do organizador</h1>
+      <a href="../" target="_blank" rel="noopener">Abrir o jogo</a>
+    </header>
+
+    <section class="adm-bloco">
+      <h2>Partida agora</h2>
+      <div id="adm-partida"></div>
+    </section>
+
+    <section class="adm-bloco">
+      <h2>Impostor da próxima partida</h2>
+      <div id="adm-proximo"></div>
+    </section>
+
+    <section class="adm-bloco">
+      <h2>Pares de vídeos</h2>
+      <p class="status">Cada partida usa o próximo par da lista, e depois do último volta ao primeiro. O par da rodada atual fica bloqueado até ela acabar.</p>
+      <div id="adm-videos" class="rolagem"></div>
+      <form id="form-video" class="form-video">
+        <h3>Adicionar par</h3>
+        <label class="campo-rotulo" for="novo-normal">Link do vídeo normal (inocentes)</label>
+        <div class="campo-linha">
+          <input id="novo-normal" class="campo" placeholder="https://www.youtube.com/shorts/..." autocomplete="off">
+          <button type="button" class="btn" data-acao="assistir-campo" data-campo="novo-normal" data-rotulo="Testando: vídeo normal">▶ Testar</button>
+        </div>
+        <label class="campo-rotulo" for="novo-impostor">Link do vídeo do impostor</label>
+        <div class="campo-linha">
+          <input id="novo-impostor" class="campo" placeholder="https://www.youtube.com/shorts/..." autocomplete="off">
+          <button type="button" class="btn" data-acao="assistir-campo" data-campo="novo-impostor" data-rotulo="Testando: vídeo do impostor">▶ Testar</button>
+        </div>
+        <button class="btn btn-principal">Adicionar par</button>
+        <p id="video-aviso" class="aviso"></p>
+      </form>
+    </section>
+
+    <section class="adm-bloco">
+      <h2>Jogadores</h2>
+      <div id="adm-jogadores" class="rolagem"></div>
+    </section>
+
+    <section class="adm-bloco">
+      <h2>Histórico</h2>
+      <div id="adm-historico" class="rolagem"></div>
+    </section>
+
+    <section class="adm-bloco">
+      <h2>Limpeza do banco</h2>
+      <p>Quem sai do jogo é apagado do banco sozinho uns 15 segundos depois (ou quando a partida em que estava termina). O histórico guarda só as últimas 50 partidas.</p>
+      <div class="adm-acoes">
+        <button class="btn" data-acao="limpar">Limpar agora</button>
+        <button class="btn btn-perigo" data-acao="apagar-historico">Apagar todo o histórico</button>
+      </div>
+      <p id="limpeza-aviso" class="aviso"></p>
+    </section>
+  </section>
+</main>
+
+<dialog id="dlg-confirmar" class="janela">
+  <form method="dialog">
+    <h3 id="dlg-confirmar-titulo"></h3>
+    <p id="dlg-confirmar-texto"></p>
+    <div class="adm-acoes">
+      <button value="cancelar" class="btn">Cancelar</button>
+      <button value="ok" id="dlg-confirmar-ok" class="btn btn-perigo">Confirmar</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-video" class="janela janela-video">
+  <h3 id="dlg-video-titulo"></h3>
+  <div id="dlg-video-palco" class="video-moldura"></div>
+  <p id="dlg-video-status" class="status"></p>
+  <div class="adm-acoes">
+    <form method="dialog"><button class="btn btn-principal">Fechar</button></form>
+    <a id="dlg-video-link" class="btn" target="_blank" rel="noopener">Abrir no YouTube</a>
+  </div>
+</dialog>
+<script type="module" src="../js/admin.js"></script>
+</body>
+</html>
